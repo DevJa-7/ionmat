@@ -1,0 +1,41 @@
+
+<ion-item (click)="searchOptions($event)" [class.item-has-focus]="showChild" lines="full">
+  <div *ngIf="!hasOptions" style="min-height:66px">
+  <ion-label position="stacked">Chips list item</ion-label>
+  <ion-input readonly="true" [class.has-focus]="focus"></ion-input>
+</div>
+
+
+  <ion-grid class="ion-no-padding" *ngIf="hasOptions" style="max-width:100%;">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-label position="stacked">Chips list item</ion-label>
+        <div *ngIf="hasOptions" style="min-height:48px">
+          <div class="overlay" >
+            <ion-input readonly="true" [class.has-focus]="focus">
+              <div class="chip-container" style="padding-top:4px; padding-bottom:4px;">
+                <ion-chip class="chip" *ngFor="let o of selectedOptions; index as i;" (click)="optionRemoved(i,o)">
+                    <ion-icon name="compass" color="primary"></ion-icon>
+                    <ion-label>{{o.name}}</ion-label>
+                    <ion-icon name="close"></ion-icon>
+                  </ion-chip>
+              </div>
+            </ion-input>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div slot="end" style="margin-left:0px" [ngStyle]="{'padding-top': hasOptions?'8px;':'12px;'}">
+    <ion-button fill="clear" style="z-index:1005" (click)="openCloseOptions($event)"><ion-icon [name]="showChild?'close':'ios-arrow-down'"></ion-icon></ion-button>
+  </div>
+</ion-item>
+
+<app-chipautocomplete [options]="options"
+                      (selectedOption)="selectPrediction($event)"
+                      (addTrackClicked)="addOptionClicked()"
+                      (removeSelection)="removeSelection($event)"
+                      (optionSelected)="optionSelected($event)"
+                      (panelOpened)="openCloseChild(true)"
+                      (panelClosed)="openCloseChild(false)">
+</app-chipautocomplete>

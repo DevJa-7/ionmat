@@ -1,0 +1,7 @@
+{
+  "name": "ionmat",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

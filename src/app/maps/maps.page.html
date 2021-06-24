@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Maps</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-googleplacessearch [searchForm]="searchForm" [addressForm]="addressForm"></app-googleplacessearch>
+
+  <form [formGroup]="addressForm" novalidate>
+    <ion-list class="ion-no-padding">
+      <ion-item no-lines>
+          <ion-label position="stacked">Name<ion-text color="danger"> *</ion-text></ion-label>
+      <ion-input autocomplete="off" formControlName="location_name"></ion-input>
+      </ion-item>
+  
+      <ion-item no-lines>
+          <ion-label position="stacked">Address 1</ion-label>
+      <ion-input autocomplete="off" formControlName="street_address"></ion-input>
+      </ion-item>
+  
+      <ion-item no-lines>
+          <ion-label position="stacked">Address 2</ion-label>
+      <ion-input autocomplete="off" formControlName="address2"></ion-input>
+      </ion-item>
+  
+      <ion-item no-lines>
+          <ion-label position="stacked">City</ion-label>
+      <ion-input autocomplete="off" formControlName="city"></ion-input>
+      </ion-item>
+  
+      <ion-item no-lines>
+          <ion-label position="stacked">Region</ion-label>
+      <ion-input autocomplete="off" formControlName="region"></ion-input>
+      </ion-item>
+  
+      <ion-item no-lines>
+          <ion-label position="stacked">Country</ion-label>
+      <ion-input autocomplete="off" formControlName="country"></ion-input>
+      </ion-item>
+  
+      <ion-item no-lines>
+          <ion-label position="stacked">Postal / ZIP code</ion-label>
+      <ion-input autocomplete="off" formControlName="postal_code"></ion-input>
+      </ion-item>
+    </ion-list>
+    </form>
+
+</ion-content>

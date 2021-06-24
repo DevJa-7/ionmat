@@ -1,0 +1,15 @@
+.overlay {
+    position: relative; /* Sit on top of the page content */
+  }
+
+.chip {
+    position: absolute;
+    z-index: 999;
+    top: 0px;
+    left: 0px;
+
+}
+
+.height {
+    height: 48px;
+}

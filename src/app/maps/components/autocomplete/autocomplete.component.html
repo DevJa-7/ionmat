@@ -1,0 +1,23 @@
+<div matAutocompleteOrigin
+     #optionorigin="matAutocompleteOrigin"
+     ></div>
+
+<input type="text"
+       type="hidden"
+       aria-label="Number"
+       [matAutocompleteConnectedTo]="optionorigin"
+       [matAutocomplete]="optionauto"
+       #optionAutoCompleteInput="matAutocompleteTrigger"
+       >
+       
+<mat-autocomplete #optionauto="matAutocomplete"
+                  (opened)="autoopened()"
+                  (closed)="autoclosed()"
+                  (optionSelected)="optionSelected($event)">
+
+             
+                    <mat-option *ngFor="let prediction of predictions" [value]="prediction" class="option">
+                      <ion-item><ion-icon slot="start" name="pin" color="danger" class="placepredictions"></ion-icon><ion-label>{{prediction.description}}</ion-label></ion-item>
+                    </mat-option>
+            
+</mat-autocomplete>

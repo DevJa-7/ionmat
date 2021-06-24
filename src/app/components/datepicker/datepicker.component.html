@@ -1,0 +1,62 @@
+<ion-item [class.item-has-focus]="focused">
+  <ion-label position="stacked">{{label}}<ion-text color="danger"> *</ion-text>
+  </ion-label>
+  <ion-input *ngIf="!useIonDateTime"
+              [value]='pageoutput'
+              [appDatetimemask]="includeTime?'datetime':'dateonly'"
+              [placeholder]="placeholder"
+              (ionBlur)="checkBlur()"
+              ></ion-input>
+
+<!-- Show picker on mobile viewports -->
+
+<ion-datetime *ngIf="useIonDateTime"
+              [value]="ionPageOutput"
+              (ionChange)="dateEntered($event, 'iondatetime')"
+              (ionFocus)="focus()"
+              [displayFormat]="ionDisplayFormat"
+              [min]="ionMin"
+              [max]="ionMax"
+              [placeholder]="placeholder"
+              ></ion-datetime>
+
+<!-- Input buttons -->
+<!-- Date -->
+
+<ion-buttons *ngIf="!useIonDateTime" slot="end" class="item-buttons">
+    <ion-button fill="clear" shape="round" (click)="picker.open()">
+      <ion-icon slot="icon-only" color="primary" name="calendar"></ion-icon>
+    </ion-button>
+
+<!-- Time -->
+
+    <ion-button *ngIf="includeTime" fill="clear" shape="round" (click)="searchOptions($event)">
+      <ion-icon slot="icon-only" color="primary" name="time"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+<!-- Datepicker -->
+  <mat-datepicker #picker
+                  [color]="'primary'"
+                  (closed)='focus()'
+                  (opened)='focus()'
+                  >
+  </mat-datepicker>
+  <input class="matinput" [min]="min" [max]="max" [matDatepicker]="picker"
+    (dateChange)="dateEntered($event, 'picker')" size="0">
+
+</ion-item>
+
+<!-- Timepicker -->
+
+<ion-grid class="ion-no-padding">
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-no-padding">
+      <app-timeautocomplete [control]="control"
+                            (timeSelected)="timeSelected($event)"
+                            (opened)="checkFocus()"
+                            (closed)="checkBlur()"
+                            ></app-timeautocomplete>
+    </ion-col>
+  </ion-row>
+</ion-grid>

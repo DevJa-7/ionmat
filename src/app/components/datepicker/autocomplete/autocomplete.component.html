@@ -1,0 +1,23 @@
+<div matAutocompleteOrigin
+     #optionorigin="matAutocompleteOrigin"
+     ></div>
+
+<input type="text"
+       type="hidden"
+       aria-label="Number"
+       [matAutocompleteConnectedTo]="optionorigin"
+       [matAutocomplete]="optionauto"
+       #optionAutoCompleteInput="matAutocompleteTrigger"
+       >
+       
+<mat-autocomplete #optionauto="matAutocomplete"
+                  (opened)="autoopened()"
+                  (closed)="autoclosed()"
+                  (optionSelected)="optionSelected($event)">
+
+                  <ng-container *ngFor="let time of times">
+                    <mat-option [value]="time">
+                      {{time[1]}}
+                    </mat-option>
+                  </ng-container>
+</mat-autocomplete>
